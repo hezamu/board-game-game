@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html class="js no-touchevents" lang="en">
+  <head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scala.js PWA</title>
+        <link rel="manifest" href="./manifest.json">
+        <meta name="theme-color" content="#29BDBB">
+        <link rel="icon" sizes="192x192" href="./launcher-icon-8x.png">
+        <script type="text/javascript" src="target/scala-2.11/pwa-scalajs-fastopt.js"></script>
+    </head>
+  <body margin=0>
+    <!-- The entire DOM is built dynamically using scalatags -->
+    <script>pwascalajs.App().main()</script>
+  </body>
+</html>
