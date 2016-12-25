@@ -13,24 +13,8 @@ object App extends JSApp {
 
     ServiceWorker.init()
 
-    dom.window.addEventListener("online", { e: Any =>
-      // re-sync data with server
-      println("You are online")
-      Page.hideOfflineWarning()
-      Arrivals.loadData()
-    }, false)
+    val page = new Page()
 
-    dom.window.addEventListener("offline", { e: Any =>
-      // queue up events for server
-      println("You are offline")
-      Page.showOfflineWarning()
-    }, false)
-
-    // check if the user is connected
-    if (dom.window.navigator.onLine) {
-      Arrivals.loadData()
-    } else {
-      Page.showOfflineWarning()
-    }
+    page.initialDOM() foreach dom.document.body.appendChild
   }
 }
