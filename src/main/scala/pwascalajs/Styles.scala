@@ -22,9 +22,15 @@ object Styles extends StyleSheet {
     textAlign := "center",
     boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
     position := "absolute",
-    left := 0,
-    right := 0,
-    top := 0
+    left := 0.px,
+    right := 0.px,
+    top := 0.px
+  )
+
+  def content = cls(
+    maxWidth := "72em",
+    marginLeft := "auto",
+    marginRight := "auto"
   )
 
   def listContent = cls(
@@ -34,12 +40,6 @@ object Styles extends StyleSheet {
     position := "relative"
   )
 
-  def content = cls(
-    maxWidth := "72em",
-    marginLeft := "auto",
-    marginRight := "auto"
-  )
-
   def container = cls(
     minHeight := "100vh",
     display := "flex",
@@ -47,10 +47,6 @@ object Styles extends StyleSheet {
   )
 
   def header = cls(
-    position := "fixed",
-    top := "0",
-    left := "0",
-    right := "0",
     padding := "0 0.5em",
     backgroundColor := "#29BDBB",
     height := "3em",
@@ -79,12 +75,6 @@ object Styles extends StyleSheet {
     Style("", "-webkit-padding-start") := "40px"
   )
 
-  def title = cls()
-
-  def status = cls()
-
-  def time = cls()
-
   def item = cls(
     borderRadius := "4px",
     margin := "0.5em auto",
@@ -95,5 +85,10 @@ object Styles extends StyleSheet {
     boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
     display := "list-item",
     boxSizing := "border-box"
+  )
+
+  def image = cls(
+    width := 200.px,
+    height := 200.px
   )
 }

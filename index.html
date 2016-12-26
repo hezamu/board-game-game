@@ -8,11 +8,13 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="manifest" href="./manifest.json">
         <link rel="icon" sizes="192x192" href="./launcher-icon-8x.png">
-        <script type="text/javascript" src="./target/scala-2.11/pwascalajs-fastopt.js"></script>
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <link href="bower_components/paper-button/paper-button.html" rel="import">
         <!-- CSS is constructed using Scalatags and injected at runtime -->
     </head>
   <body margin=0>
     <!-- The entire DOM is built dynamically using Scalatags -->
+    <script type="text/javascript" src="./target/scala-2.11/pwascalajs-fastopt.js"></script>
     <script>pwascalajs.App().main()</script>
   </body>
 </html>

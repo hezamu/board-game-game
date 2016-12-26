@@ -13,8 +13,6 @@ object App extends JSApp {
 
     ServiceWorker.init()
 
-    val page = new Page()
-
-    page.initialDOM() foreach dom.document.body.appendChild
+    Page.init()
   }
 }

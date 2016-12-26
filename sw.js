@@ -13,7 +13,8 @@ self.addEventListener('install', function (e) {
                 './index.html',
                 './manifest.json',
                 './target/scala-2.11/pwascalajs-fastopt.js',
-                './offline.html'
+                './offline.html',
+                './data.json'
             ]).then(function () {
                 self.skipWaiting();
             });
