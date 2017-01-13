@@ -1,9 +1,8 @@
 package pwascalajs
 
 import org.scalajs.dom
+import org.scalajs.dom.raw.Element
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.{Failure, Success}
 import scalatags.JsDom.all._
 
 object Page {
@@ -14,16 +13,18 @@ object Page {
     }, false)
 
     dom.window.addEventListener("offline", { e: Any =>
-      // queue up events for server
-      println("You are offline")
       showOfflineWarning()
     }, false)
 
+    import PaperTags._
+
     Seq(
-      header(
-        div(
-          h3("arrivals", Styles.headerH3),
-          Styles.content
+      header(id := "header",
+        h2("Board Game Game", Styles.title),
+        ironIcon(
+          id := "offline",
+          div(Styles.offlineIcon),
+          Styles.offline
         ),
         Styles.header
       ).render,
@@ -31,13 +32,18 @@ object Page {
       div(id := "image", Styles.image).render,
 
       div(
-        Styles.container
+        div(Styles.button),
+        div(Styles.button),
+        div(Styles.button),
+        div(Styles.button),
+        Styles.buttons
       ).render
     ) foreach dom.document.body.appendChild
 
     // check if the user is connected
     if (dom.window.navigator.onLine) {
       Games.load()
+      hideOfflineWarning()
     } else {
       showOfflineWarning()
     }
@@ -45,20 +51,20 @@ object Page {
 
   def showOfflineWarning() {
     println("Showing offline warning")
-
-    // load html template informing the user they are offline
-    dom.ext.Ajax.get("./offline.html").onComplete {
-      case Success(xhr) =>
-        val offlineDiv = div(id := "offline", Styles.offline).render
-        offlineDiv.innerHTML = xhr.responseText
-        dom.document.body.appendChild(offlineDiv)
-      case Failure(_) => println(s"Failed to load offline message.")
-    }
+    dom.document.querySelector("#offline").classList.remove(Styles.hidden.name)
+//
+//    // load html template informing the user they are offline
+//    dom.ext.Ajax.get("./offline.html").onComplete {
+//      case Success(xhr) =>
+//        val offlineDiv = div(id := "offline", Styles.offline).render
+//        offlineDiv.innerHTML = xhr.responseText
+//        dom.document.body.appendChild(offlineDiv)
+//      case Failure(_) => println(s"Failed to load offline message.")
+//    }
   }
 
   def hideOfflineWarning() {
     println("Hiding offline warning")
-    val e = dom.document.getElementById("offline")
-    dom.document.body.removeChild(e)
+    dom.document.querySelector("#offline").classList.add(Styles.hidden.name)
   }
 }

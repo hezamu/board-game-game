@@ -3,11 +3,9 @@ var cacheName = 'v1:static';
 
 // during the install phase you usually want to cache static assets
 self.addEventListener('install', function (e) {
-    console.log('Service worker insted');
     // once the SW is installed, go ahead and fetch the resources to make this work offline
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
-            console.log('SW cache open');
             return cache.addAll([
                 './',
                 './index.html',

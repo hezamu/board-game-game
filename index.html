@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html class="js no-touchevents" lang="en">
-  <head>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Scala.js PWA</title>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="manifest" href="./manifest.json">
         <link rel="icon" sizes="192x192" href="./launcher-icon-8x.png">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
         <link href="bower_components/paper-button/paper-button.html" rel="import">
+        <link href="bower_components/iron-icon/iron-icon.html" rel="import">
+        <link href="bower_components/iron-icons/iron-icons.html" rel="import">
         <!-- CSS is constructed using Scalatags and injected at runtime -->
     </head>
-  <body margin=0>
-    <!-- The entire DOM is built dynamically using Scalatags -->
-    <script type="text/javascript" src="./target/scala-2.11/pwascalajs-fastopt.js"></script>
-    <script>pwascalajs.App().main()</script>
-  </body>
+    <body>
+        <!-- The entire DOM is built dynamically using Scalatags -->
+        <script type="text/javascript" src="./target/scala-2.11/pwascalajs-fastopt.js"></script>
+        <script>pwascalajs.App().main()</script>
+    </body>
 </html>

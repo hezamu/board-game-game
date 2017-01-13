@@ -11,7 +11,11 @@ trait PaperTags extends Util with TagFactory {
   lazy val ironIcon = typedTag[IronIconElement]("iron-icon")
 }
 
-object PaperTags extends Cap with PaperTags with Aggregate
+trait PaperAttrs extends Util {
+  lazy val icon = attr("icon")
+}
+
+object PaperTags extends Cap with PaperTags with PaperAttrs with Aggregate
 
 @js.native
 abstract class PaperButtonElement extends raw.HTMLElement
