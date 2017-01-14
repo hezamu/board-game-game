@@ -1,6 +1,6 @@
 enablePlugins(ScalaJSPlugin)
 
-name := "pwascalajs"
+name := "boardgamegame"
 
 scalaVersion := "2.11.8"
 

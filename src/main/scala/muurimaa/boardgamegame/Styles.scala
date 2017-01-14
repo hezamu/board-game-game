@@ -1,4 +1,4 @@
-package pwascalajs
+package muurimaa.boardgamegame
 
 import scalatags.JsDom.all._
 import scalatags.generic.Style

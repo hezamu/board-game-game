@@ -1,4 +1,4 @@
-package pwascalajs
+package muurimaa.boardgamegame
 
 import org.scalajs.dom
 

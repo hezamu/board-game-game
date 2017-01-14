@@ -10,8 +10,7 @@ self.addEventListener('install', function (e) {
                 './',
                 './index.html',
                 './manifest.json',
-                './target/scala-2.11/pwascalajs-fastopt.js',
-                './offline.html',
+                './boardgamegame-opt.js',
                 './data.json'
             ]).then(function () {
                 self.skipWaiting();
