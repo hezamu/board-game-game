@@ -1,4 +1,15 @@
 [
-  { "name": "Carcassonne", "img": "pics/carcassonne.gif" },
-  { "name": "Santorini", "img": "pics/slide_santorini_board.png" }
+  { "name": "Carcassonne", "img": "pics/carcassonne.gif", "width": 673, "height": 175 },
+  { "name": "Santorini", "img": "pics/slide_santorini_board.png", "width": 533, "height": 282 },
+  { "name": "7 Wonders", "img": "pics/201603281127_7+wonders.jpg", "width": 600, "height": 600 },
+  { "name": "Jumanji", "img": "pics/Jumanji-board-games-1093448_683_305.jpg", "width": 683, "height": 305},
+  { "name": "Risk", "img": "pics/risk-board-game.jpg", "width": 800, "height": 518 },
+  { "name": "Kingdoms", "img": "pics/Kingdoms_board_game.jpg", "width": 500, "height": 378 },
+  { "name": "Lord of the Rings", "img": "pics/Lord_of_the_Rings_board_game_cover.jpg", "width": 500, "height": 498 },
+  { "name": "Ticket To Ride", "img": "pics/tickettoride_box.jpg", "width": 1600, "height": 1593 },
+  { "name": "Pirate's Cove", "img": "pics/Pirate_Cove_board_game_cover.jpg", "width": 467, "height": 500 },
+  { "name": "Colosseum", "img": "pics/Colosseum_board_game_box.jpg", "width": 500, "height": 500 },
+  { "name": "Viticulture", "img": "pics/Viticulture-Box-Cover.png", "width": 500, "height": 405 },
+  { "name": "Village", "img": "pics/village-board-game-box-cover.jpg", "width": 500, "height": 500 },
+  { "name": "Five Tribes", "img": "pics/five-tribes.jpg", "width": 1462, "height": 1500 }
 ]

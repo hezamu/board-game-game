@@ -14,5 +14,12 @@ object App extends JSApp {
     ServiceWorker.init()
 
     Page.init()
+
+    if (dom.window.navigator.onLine) {
+      Game.load()
+      Page.hideOfflineWarning()
+    } else {
+      Page.showOfflineWarning()
+    }
   }
 }

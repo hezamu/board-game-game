@@ -1,116 +1,107 @@
 package pwascalajs
 
-import scalatags.JsDom.all.{background, fontFamily, top, _}
+import scalatags.JsDom.all._
 import scalatags.generic.Style
 import scalatags.stylesheet._
 
 object Styles extends StyleSheet {
   def body = cls(
-    width := 100.pct,
     margin := 0.px,
     fontFamily := "\"Helvetica Neue\", \"Calibri Light\", Roboto, sans-serif",
     Style("", "text-rendering") := "optimizeLegibility",
     Style("", "-webkit-font-smoothing") := "antialiased",
-    letterSpacing := "0.02em"
-  )
-
-  def title = cls(
-    top := "0",
-    margin := "0"
-  )
-
-  def loading = cls(
-    top := "0",
-    margin := "0"
-  )
-
-  def visible = cls(
-    visibility := "visible"
-  )
-
-  def hidden = cls(
-    visibility := "hidden"
-  )
-
-  def offline = cls(
-    margin := 0.px,
-    padding := "0.83em",
-    textAlign := "center",
-//    boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-    position := "absolute",
-    right := 0.px,
-    top := 0.px
-  )
-
-  def offlineIcon = cls(
-//    Style("", "background-image") := "url(\"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT9Em6WltlxhAL82pEnw0U0B37mU8QTZUUGjY4pGZ6_xqXwpOf3R0yC71A\")"
-    backgroundImage := "url(\"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT9Em6WltlxhAL82pEnw0U0B37mU8QTZUUGjY4pGZ6_xqXwpOf3R0yC71A\")",
-    backgroundSize := "cover",
-    height := "inherit",
-    width := "inherit"
-  )
-
-  def content = cls(
-    maxWidth := "72em",
-    marginLeft := "auto",
-    marginRight := "auto"
-  )
-
-  def listContent = cls(
-    content.splice,
-    marginTop := "3em",
-    width := "100%",
-    position := "relative"
-  )
-
-  def container = cls(
-    minHeight := "100vh",
     display := "flex",
-    flexDirection := "column"
+    flexDirection := "column",
+    alignItems := "center",
+    height := 100.pct
   )
+
+  def title = cls(paddingLeft := 0.5.em)
 
   def header = cls(
-    padding := "0 0.5em",
     backgroundColor := "#29BDBB",
     height := "3em",
     boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-    lineHeight := "3em",
     color := "#fff",
-    Style("", "backface-visibility") := "hidden"
+    width := 100.pct,
+    display := "flex",
+    alignItems := "center",
+    justifyContent := "space-between"
   )
 
+  def offline = cls(
+    paddingRight := 1.em,
+    fontSize := "small",
+    fontWeight := "300"
+  )
 
-//  def list = cls(
-//    margin := "0",
-//    listStyle := "none",
-//    display := "flex",
-//    flexDirection := "column",
-//    transition := "opacity 0.2s ease-in-out",
-//    padding := "0 0.5em",
-//    Style("", "-webkit-margin-before") := "1em",
-//    Style("", "-webkit-margin-after") := "1em",
-//    Style("", "-webkit-margin-start") := "0px",
-//    Style("", "-webkit-margin-end") := "0px",
-//    Style("", "-webkit-padding-start") := "40px"
-//  )
+  def hidden = cls(visibility := "hidden")
+
+  def centerText = cls(
+    textAlign := "center",
+    fontSize := 24.px
+  )
+
+  def question = cls(
+    centerText.splice,
+    height := 48.px,
+    lineHeight := 48.px,
+    fontSize := 30.px,
+    fontWeight := "300"
+  )
 
   def buttons = cls(
+    display := "flex",
+    flexDirection := "column",
+    flexWrap := "wrap",
+    position := "relative",
+    width := 100.pct,
+    maxWidth := 400.px,
+    height := 400.px
   )
+
+  def greyed = cls(opacity := "0.3")
 
   def button = cls(
-    borderRadius := "4px",
-    margin := "0.5em auto",
-    padding := "1em",
-    width := "100%",
-    backgroundColor := "#fff",
-    textAlign := "left",
-    boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-    display := "list-item",
-    boxSizing := "border-box"
+    width := 50.pct,
+    height := 50.pct,
+    backgroundRepeat := "no-repeat",
+    boxShadow := "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
   )
 
-  def image = cls(
-    width := 200.px,
-    height := 200.px
+  def score = cls(
+    centerText.splice,
+    height := 48.px,
+    lineHeight := 48.px,
+    fontSize := 30.px,
+    fontWeight := "300"
   )
+
+  def summary = cls(
+    position := "absolute",
+    top := 0.pct,
+    bottom := 0.pct,
+    left := 0.pct,
+    right := 0.pct,
+    margin := "auto",
+    display := "flex",
+    height := 48.px,
+    lineHeight := 48.px,
+    backgroundColor := "#29BDBB",
+    color := "white"
+  )
+
+  def summaryText = cls(
+    fontSize := 20.px,
+    fontWeight := "600",
+    flexGrow := 1,
+    paddingLeft := 1.em
+  )
+
+  def summaryButton = cls(
+    fontSize := 12.px,
+    fontWeight := "400",
+    paddingRight := 10.px
+  )
+
 }
