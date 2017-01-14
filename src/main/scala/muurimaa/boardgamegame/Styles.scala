@@ -9,7 +9,6 @@ object Styles extends StyleSheet {
     margin := 0.px,
     fontFamily := "\"Helvetica Neue\", \"Calibri Light\", Roboto, sans-serif",
     Style("", "text-rendering") := "optimizeLegibility",
-    Style("", "-webkit-font-smoothing") := "antialiased",
     display := "flex",
     flexDirection := "column",
     alignItems := "center",
