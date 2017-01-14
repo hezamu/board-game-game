@@ -13,7 +13,9 @@ project/target
 build
 target
 **.sc
+*.log
 *.launch
 *.db
 /build
 /bin/
+public/*fastopt*
