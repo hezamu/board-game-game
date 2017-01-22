@@ -6,12 +6,12 @@
 
 Recognize board games from their cover art!
 
-You are presented a name of a board game 4 graphical tiles with portions of cover art from various board games.
+You are presented a name of a board game and 4 graphical tiles with portions of cover art from various board games.
 You need to choose which tile is from the game in question.
 
 [Play the game!](https://board-game-game.firebaseapp.com/)
 
-![Screenshot](https://github.com/hezamu/board-game-game/blob/master/public/pics/screenshot.png?raw=true)
+![Screenshot](https://github.com/hezamu/board-game-game/blob/master/public/pics/screenshot.png?raw=true | width=320)
 
 Inspired by [Javascript Guessing Game](https://github.com/samiheikki/javascript-guessing-game) by Sami Suo-Heikki.
 
