@@ -10,6 +10,7 @@ import scala.util.Random
 import scalatags.JsDom.all._
 
 object Page {
+  // Set up listeners and build the DOM
   def init(): Unit = {
     dom.window.addEventListener("online", { e: Any =>
       hideOfflineWarning()
@@ -19,9 +20,13 @@ object Page {
       showOfflineWarning()
     }, false)
 
+    import PaperTags._
+
     dom.document.body.appendChild(header(id := "header",
       h2("Board Game Game", Styles.title),
-      div(id := "offline", Styles.offline, "OFFLINE"),
+
+      // An example how to use the wrapped Polymer components with Scalatags
+      ironIcon(id := "offline", icon := "icons:cloud-off", Styles.offline),
       Styles.header
     ).render)
 
@@ -31,35 +36,24 @@ object Page {
       Styles.questionContainer
     ).render)
 
-    def gameButton(i: String, index: Int) = div(
-      id := i,
-      onclick := { _: MouseEvent => Game.selected(index) },
-      Styles.button
-    )
-
-//    import PaperTags._
-
     dom.document.body.appendChild(div(
-      gameButton("nw", 0),
-      gameButton("ne", 1),
-      gameButton("sw", 2),
-      gameButton("se", 3),
+      div(id := "nw", onclick := { _: MouseEvent => Game.selected(0) }, Styles.button),
+      div(id := "ne", onclick := { _: MouseEvent => Game.selected(1) }, Styles.button),
+      div(id := "sw", onclick := { _: MouseEvent => Game.selected(2) }, Styles.button),
+      div(id := "se", onclick := { _: MouseEvent => Game.selected(3) }, Styles.button),
+
       div(
         id := "summary",
         div(id := "summaryText", Styles.summaryText),
         div(
           div(onclick := { _: MouseEvent => Game.resetGame() }, "TRY AGAIN", Styles.summaryButton),
-//          div("SHARE", Styles.summaryButton),
           Styles.summaryButtons
         ),
-        Styles.summary
+        Styles.summary,
+        Styles.hidden // This gets removed when a game ends
       ),
       Styles.buttons
     ).render)
-
-    hideSummary()
-
-    dom.window.scrollTo(0, 1)
   }
 
   def gameButtons: Seq[Dynamic] = Seq("#nw","#ne","#sw","#se") map $
@@ -79,15 +73,9 @@ object Page {
     }
   }
 
-  def $(q: String): Dynamic = dom.document.querySelector(q).asInstanceOf[js.Dynamic]
-
   def showQuestion(question: String): Unit = $("#question").innerText = s"$question"
 
   def showProgress(progress: String): Unit = $("#progress").style.setProperty("width", progress)
-
-  def showOfflineWarning(): Unit = $("#offline").classList.remove(Styles.hidden.name)
-
-  def hideOfflineWarning(): Unit = $("#offline").classList.add(Styles.hidden.name)
 
   def showSummary(msg: String): Unit = {
     $("#summaryText").innerHTML = msg
@@ -103,4 +91,11 @@ object Page {
   def enableGameButtons(): Unit = gameButtons foreach {
     _.classList.remove(Styles.greyed.name)
   }
+
+  def showOfflineWarning(): Unit = $("#offline").classList.remove(Styles.hidden.name)
+
+  def hideOfflineWarning(): Unit = $("#offline").classList.add(Styles.hidden.name)
+
+  // Helper function
+  private def $(q: String): Dynamic = dom.document.querySelector(q).asInstanceOf[js.Dynamic]
 }

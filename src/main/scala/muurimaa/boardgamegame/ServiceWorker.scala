@@ -10,9 +10,12 @@ import scala.util.{Failure, Success}
 
 @JSExport
 object ServiceWorker {
+
+  def serviceWorker = if(App.debug) "public/sw.js" else "sw.js"
+
   def init(): Unit = {
     if (!js.isUndefined(dom.window.navigator.serviceWorker)) {
-      dom.window.navigator.serviceWorker.register("sw.js").toFuture.onComplete {
+      dom.window.navigator.serviceWorker.register(serviceWorker).toFuture.onComplete {
         case Success(reg) => println(s"Service worker registration succeeded: $reg")
         case Failure(err) => println(s"Service worker registration failed: $err")
       }

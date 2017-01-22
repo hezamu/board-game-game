@@ -4,19 +4,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <title>Board Game Game</title>
+        <meta name="author" content="Henri Muurimaa">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link rel="manifest" href="./manifest.json">
-        <link rel="icon" sizes="192x192" href="./launcher-icon-8x.png">
-        <!--
-        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-        <link href="bower_components/paper-button/paper-button.html" rel="import">
-        <link href="bower_components/iron-icon/iron-icon.html" rel="import">
-        <link href="bower_components/iron-icons/iron-icons.html" rel="import">
-        -->
+        <link rel="manifest" href="./public/manifest.json">
+        <script src="public/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <link href="public/bower_components/iron-icon/iron-icon.html" rel="import">
+        <link href="public/bower_components/iron-icons/iron-icons.html" rel="import">
         <!-- CSS is constructed using Scalatags and injected at runtime -->
     </head>
     <body>
-        <!-- The entire DOM is built dynamically using Scalatags -->
+        <!-- The DOM is built dynamically using Scalatags -->
         <script type="text/javascript" src="target/scala-2.11/boardgamegame-fastopt.js"></script>
         <script>muurimaa.boardgamegame.App().main()</script>
     </body>

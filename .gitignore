@@ -18,4 +18,4 @@ target
 *.db
 /build
 /bin/
-public/*fastopt*
+public/*opt.js

@@ -7,7 +7,7 @@ import scalatags.JsDom.all._
 import scalatags.JsDom.tags2.style
 
 object App extends JSApp {
-
+  // Helper method to see if we are in development or production
   def debug: Boolean = dom.window.location.href.indexOf("index-dev.html") > 0
 
   def main(): Unit = {
@@ -24,13 +24,13 @@ object App extends JSApp {
 
     Page.init()
 
-    if (dom.window.navigator.onLine) {
-      if(debug) println("Loading assets")
+    println("Loading assets")
+    Game.load()
 
-      Game.load()
+    if (dom.window.navigator.onLine) {
+
+
       Page.hideOfflineWarning()
-    } else {
-      Page.showOfflineWarning()
-    }
+    } else Page.showOfflineWarning()
   }
 }
