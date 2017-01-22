@@ -12,7 +12,8 @@ object Styles extends StyleSheet {
     display := "flex",
     flexDirection := "column",
     alignItems := "center",
-    height := 100.pct
+    height := 100.pct,
+    width := 100.pct
   )
 
   def title = cls(paddingLeft := 0.5.em)
@@ -41,12 +42,30 @@ object Styles extends StyleSheet {
     fontSize := 24.px
   )
 
+  def questionContainer = cls(
+    width := 100.pct,
+    height := 48.px,
+    position := "relative"
+  )
+
+  def fullSize = cls(
+    position := "absolute",
+    height := 100.pct
+  )
+
   def question = cls(
     centerText.splice,
-    height := 48.px,
+    fullSize.splice,
+    width := 100.pct,
     lineHeight := 48.px,
     fontSize := 30.px,
     fontWeight := "300"
+  )
+
+  def progress = cls(
+    fullSize.splice,
+    width := 0.pct,
+    backgroundColor := "lightgreen"
   )
 
   def buttons = cls(
@@ -56,7 +75,7 @@ object Styles extends StyleSheet {
     position := "relative",
     width := 100.pct,
     maxWidth := 400.px,
-    height := 400.px
+    height := 380.px
   )
 
   def greyed = cls(opacity := "0.3")
@@ -78,23 +97,28 @@ object Styles extends StyleSheet {
 
   def summary = cls(
     position := "absolute",
+    display := "inline-table",
     top := 0.pct,
     bottom := 0.pct,
     left := 0.pct,
     right := 0.pct,
+    width := 100.pct,
     margin := "auto",
-    display := "flex",
-    height := 48.px,
-    lineHeight := 48.px,
     backgroundColor := "#29BDBB",
     color := "white"
   )
 
+  def summaryButtons = cls(
+    display := "flex",
+    justifyContent := "space-around",
+    padding := "10px 0px 10px"
+  )
+
   def summaryText = cls(
-    fontSize := 20.px,
-    fontWeight := "600",
-    flexGrow := 1,
-    paddingLeft := 1.em
+    fontSize := 18.px,
+    fontWeight := "300",
+    fontStyle := "italic",
+    margin := "10px 40px 10px"
   )
 
   def summaryButton = cls(
@@ -102,5 +126,4 @@ object Styles extends StyleSheet {
     fontWeight := "400",
     paddingRight := 10.px
   )
-
 }

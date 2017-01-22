@@ -3,9 +3,9 @@ package muurimaa.boardgamegame
 import org.scalajs.dom
 import org.scalajs.dom.MouseEvent
 import org.scalajs.dom.html.Div
-import org.scalajs.dom.raw.Element
 
 import scala.scalajs.js
+import scala.scalajs.js.Dynamic
 import scala.util.Random
 import scalatags.JsDom.all._
 
@@ -25,7 +25,11 @@ object Page {
       Styles.header
     ).render)
 
-    dom.document.body.appendChild(div(id := "question", Styles.question).render)
+    dom.document.body.appendChild(div(
+      div(id := "progress", Styles.progress),
+      div(id := "question", Styles.question),
+      Styles.questionContainer
+    ).render)
 
     def gameButton(i: String, index: Int) = div(
       id := i,
@@ -33,11 +37,9 @@ object Page {
       Styles.button
     )
 
-    import PaperTags._
+//    import PaperTags._
 
     dom.document.body.appendChild(div(
-//      div(gameButton("nw", 0), gameButton("ne", 1), Styles.buttonRow),
-//      div(gameButton("sw", 2), gameButton("se", 3), Styles.buttonRow),
       gameButton("nw", 0),
       gameButton("ne", 1),
       gameButton("sw", 2),
@@ -45,8 +47,11 @@ object Page {
       div(
         id := "summary",
         div(id := "summaryText", Styles.summaryText),
-        div(onclick := { _: MouseEvent => Game.resetGame() }, "TRY AGAIN", Styles.summaryButton),
-//        div(onclick := { _: MouseEvent => Game.share() }, "SHARE", Styles.summaryButton),
+        div(
+          div(onclick := { _: MouseEvent => Game.resetGame() }, "TRY AGAIN", Styles.summaryButton),
+//          div("SHARE", Styles.summaryButton),
+          Styles.summaryButtons
+        ),
         Styles.summary
       ),
       Styles.buttons
@@ -54,15 +59,17 @@ object Page {
 
     hideSummary()
 
-    dom.document.body.appendChild(div(id := "score", Styles.score).render)
+    dom.window.scrollTo(0, 1)
   }
 
-  def gameButtons: Seq[Element] = Seq("#nw","#ne","#sw","#se") map dom.document.querySelector
+  def gameButtons: Seq[Dynamic] = Seq("#nw","#ne","#sw","#se") map $
 
   def showGames(games: Seq[BoardGame]): Unit = {
+    def gameUrl(game: BoardGame) = if(App.debug) s"url(public/${game.img})" else s"url(${game.img})"
+
     gameButtons zip games foreach {
       case (b: Div, g: BoardGame) =>
-        b.style.setProperty("background-image", s"url(${g.img})")
+        b.style.setProperty("background-image", gameUrl(g))
 
         val xoff = Random.nextInt(Math.max(1, g.width - b.clientWidth))
         b.style.setProperty("background-position-x", s"-${xoff}px")
@@ -72,29 +79,22 @@ object Page {
     }
   }
 
-  def showQuestion(question: String): Unit = {
-    dom.document.querySelector("#question").asInstanceOf[js.Dynamic].innerHTML = question
-  }
+  def $(q: String): Dynamic = dom.document.querySelector(q).asInstanceOf[js.Dynamic]
 
-  def showScore(result: String): Unit = {
-    dom.document.querySelector("#score").asInstanceOf[js.Dynamic].innerHTML = result
-  }
+  def showQuestion(question: String): Unit = $("#question").innerText = s"$question"
 
-  def offlineDiv: Element = dom.document.querySelector("#offline")
+  def showProgress(progress: String): Unit = $("#progress").style.setProperty("width", progress)
 
-  def showOfflineWarning(): Unit = offlineDiv.classList.remove(Styles.hidden.name)
+  def showOfflineWarning(): Unit = $("#offline").classList.remove(Styles.hidden.name)
 
-  def hideOfflineWarning(): Unit = offlineDiv.classList.add(Styles.hidden.name)
-
-  def summaryDiv: Element = dom.document.querySelector("#summary")
+  def hideOfflineWarning(): Unit = $("#offline").classList.add(Styles.hidden.name)
 
   def showSummary(msg: String): Unit = {
-    dom.document.querySelector("#summaryText").asInstanceOf[js.Dynamic].innerHTML = msg
-    summaryDiv.classList.remove(Styles.hidden.name)
-    summaryDiv.classList.remove(Styles.hidden.name)
+    $("#summaryText").innerHTML = msg
+    $("#summary").classList.remove(Styles.hidden.name)
   }
 
-  def hideSummary(): Unit = summaryDiv.classList.add(Styles.hidden.name)
+  def hideSummary(): Unit = $("#summary").classList.add(Styles.hidden.name)
 
   def disableGameButtons(): Unit = gameButtons foreach {
     _.classList.add(Styles.greyed.name)
