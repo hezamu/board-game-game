@@ -13,8 +13,6 @@ You need to choose which tile is from the game in question.
 
 <img src="https://github.com/hezamu/board-game-game/blob/master/public/pics/screenshot.png?raw=true" width="320px" height="568" />
 
-![Screenshot](https://github.com/hezamu/board-game-game/blob/master/public/pics/screenshot.png?raw=true | width=320)
-
 Inspired by [Javascript Guessing Game](https://github.com/samiheikki/javascript-guessing-game) by Sami Suo-Heikki.
 
 ## Description
