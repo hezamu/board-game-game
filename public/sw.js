@@ -1,7 +1,6 @@
-// use a cacheName for cache versioning
+// For cache versioning
 var cacheName = 'v1:static';
 
-// during the install phase you usually want to cache static assets
 self.addEventListener('install', function (e) {
     // once the SW is installed, go ahead and fetch the resources to make this work offline
     e.waitUntil(
@@ -11,7 +10,12 @@ self.addEventListener('install', function (e) {
                 './index.html',
                 './manifest.json',
                 './boardgamegame-opt.js',
-                './data.json'
+                './data.json',
+                './sw.js',
+                'https://fonts.googleapis.com/css?family=Montserrat',
+                'bower_components/webcomponentsjs/webcomponents-lite.js',
+                'bower_components/iron-icon/iron-icon.html',
+                'bower_components/iron-icons/iron-icons.html'
             ]).then(function () {
                 self.skipWaiting();
             });
@@ -19,15 +23,14 @@ self.addEventListener('install', function (e) {
     );
 });
 
-// when the browser fetches a url
+// When the browser fetches a url
 self.addEventListener('fetch', function (event) {
-    // either respond with the cached object or go ahead and fetch the actual url
+    // Either respond with the cached object or go ahead and fetch the actual url
     event.respondWith(
         caches.match(event.request).then(function (response) {
             if (response) {
-                return response; // retrieve from cache
+                return response;
             }
-            // fetch as normal
             return fetch(event.request);
         })
     );
