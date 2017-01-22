@@ -1,32 +1,47 @@
-# JavaScript Guessing Game
+# Board Game Game
 
-> You know there are too many JS libraries when there is a game for it
+> A weekend project to explore progressive web apps with Scala.js
+
+## Gameplay
+
+Recognize board games from their cover art!
+
+You are presented a name of a board game 4 graphical tiles with portions of cover art from various board games.
+You need to choose which tile is from the game in question.
+
+[Play the game!](https://board-game-game.firebaseapp.com/)
+
+![Screenshot](https://github.com/hezamu/board-game-game/blob/master/public/pics/screenshot.png?raw=true)
+
+Inspired by [Javascript Guessing Game](https://github.com/samiheikki/javascript-guessing-game) by Sami Suo-Heikki.
 
 ## Description
 
-React, Flux, Angular, Aurelia, TypeScript, Flow, oh my! By trying to make things simpler, I have created this game to stay on top of JavaScript in 2016.
+This is a weekend project to explore PWA techniques with Scala.js. Some features:
+* Service workers enable playing the game offline. Note that only the cover images that have been cached by your browser are usable in offline mode.
+* UI is built in a responsive manner to make the game playable with all device types.
+* Polymer [`<iron-icon>`](https://www.webcomponents.org/element/PolymerElements/iron-icon) is used to display the offline indicator. The project includes a small wrapper to enable a typesafe way to use the web component in Scala code.
+* The DOM and CSS are built dynamically at runtime using [ScalaTags](http://www.lihaoyi.com/scalatags/), which allows us to write HTML and CSS in a declarative and typesafe manner.
 
-[Play the game!](https://javascript-game.firebaseapp.com/)
+## Adding new board games
 
-![Demo](https://github.com/samiheikki/javascript-guessing-game/blob/master/static/og_image.jpg?raw=true)
-
-Inspired by [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.6m8kr3ema).
-
-## Contributing
-
-  1. Add a new object of a JavaScript tool to `/static/logos.json` JSON file.
-    2. Add `100x100` .png image to `/static/logos/` directory with the tool's name in lowercase as the file's name.
-      3. Create a pull request :)
+  1. Find a good image of the cover for the board game you want to add. The image size should be at least 500x500 pixels.
+        2. (OPTIONAL) Add the image to `public/pics` folder. 
+  3. Add a new object with the game name, image URL and dimensions to `public/data.json`.
+  4. Create a pull request :)
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+# Start SBT
+$ sbt
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification and service workers
-npm run build
+# Start a loop that builds the project whenever sources change 
+sbt> ~fastOptJS
 ```
+
+You also need to serve the project directory over HTTP to access it with your browser. Eg. with Python:
+```
+$ python -c "import BaseHTTPServer as bhs, SimpleHTTPServer as shs; bhs.HTTPServer((\"127.0.0.1\", 8888), shs.SimpleHTTPRequestHandler).serve_forever()"
+```
+After this the UI is accessible at [http://localhost:8888](http://localhost:8888)
